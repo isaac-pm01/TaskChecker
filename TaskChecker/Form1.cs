@@ -94,8 +94,18 @@ namespace TaskChecker
 
         private void btnUnderline_Click(object sender, EventArgs e)
         {
-            FontStyle style = rtbBody.SelectionFont.Style ^ FontStyle.Underline;
-            rtbBody.SelectionFont = new Font(rtbBody.SelectionFont, style);
+            FontStyle newStyle;
+            if (rtbBody.SelectionFont.Underline) 
+            {
+                newStyle = rtbBody.SelectionFont.Style & ~FontStyle.Underline; 
+            }
+            else 
+            {
+                newStyle = rtbBody.SelectionFont.Style | FontStyle.Underline; 
+            }
+            Font newFont = new Font(rtbBody.SelectionFont, newStyle);
+
+            rtbBody.SelectionFont = newFont;
         }
 
         private void AddCategory(string categoryName)
