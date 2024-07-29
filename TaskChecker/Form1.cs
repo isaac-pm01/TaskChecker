@@ -44,10 +44,15 @@ namespace TaskChecker
 
         private void btnColor_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog();
-            if (colorDialog.ShowDialog() == DialogResult.OK)
+            
+            using (ColorDialog colorPicker = new ColorDialog())
             {
-                rtbBody.SelectionColor = colorDialog.Color;
+                
+                if (colorPicker.ShowDialog() == DialogResult.OK)
+                {
+          
+                    rtbBody.ForeColor = colorPicker.Color;
+                }
             }
         }
 
