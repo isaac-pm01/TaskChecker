@@ -61,8 +61,19 @@ namespace TaskChecker
 
         private void btnBold_Click(object sender, EventArgs e)
         {
-            FontStyle style = rtbBody.SelectionFont.Style ^ FontStyle.Bold;
-            rtbBody.SelectionFont = new Font(rtbBody.SelectionFont, style);
+            FontStyle newStyle;
+            if (rtbBody.SelectionFont.Bold) 
+            {
+                newStyle = rtbBody.SelectionFont.Style & ~FontStyle.Bold; 
+            }
+            else 
+            {
+                newStyle = rtbBody.SelectionFont.Style | FontStyle.Bold; 
+            }
+
+            Font newFont = new Font(rtbBody.SelectionFont, newStyle);
+
+            rtbBody.SelectionFont = newFont;
         }
 
         private void btnItalic_Click(object sender, EventArgs e)
