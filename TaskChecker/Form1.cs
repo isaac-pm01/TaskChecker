@@ -38,8 +38,11 @@ namespace TaskChecker
 
         private void numFontSize_ValueChanged(object sender, EventArgs e)
         {
-            float newSize = (float)numFontSize.Value;
-            rtbBody.Font = new Font(rtbBody.Font.FontFamily, newSize);
+            float newFontSize = (float)numFontSize.Value;
+
+            Font newFont = new Font(rtbBody.Font.FontFamily, newFontSize, rtbBody.Font.Style);
+
+            rtbBody.Font = newFont;
         }
 
         private void btnColor_Click(object sender, EventArgs e)
