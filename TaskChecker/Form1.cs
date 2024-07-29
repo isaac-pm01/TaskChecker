@@ -78,8 +78,18 @@ namespace TaskChecker
 
         private void btnItalic_Click(object sender, EventArgs e)
         {
-            FontStyle style = rtbBody.SelectionFont.Style ^ FontStyle.Italic;
-            rtbBody.SelectionFont = new Font(rtbBody.SelectionFont, style);
+            FontStyle newStyle;
+            if (rtbBody.SelectionFont.Italic)  
+            {
+                newStyle = rtbBody.SelectionFont.Style & ~FontStyle.Italic; 
+            }
+            else  
+            {
+                newStyle = rtbBody.SelectionFont.Style | FontStyle.Italic;  
+            }
+
+            Font newFont = new Font(rtbBody.SelectionFont, newStyle);
+            rtbBody.SelectionFont = newFont;
         }
 
         private void btnUnderline_Click(object sender, EventArgs e)
